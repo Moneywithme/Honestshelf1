@@ -6,28 +6,40 @@
 <title>The Honest Shelf — Free Weight Loss Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  @import url('https://fonts.cdnfonts.com/css/super-gt');
+
   :root {
     --yellow: #FFD700;
     --yellow-dim: #C9A84C;
     --bg: #0E0E0D;
-    --bg2: #161615;
-    --bg3: #1C1C1A;
-    --border: rgba(255,255,255,0.06);
-    --text: #EAE6DA;
-    --muted: #7A7670;
+    --bg2: rgba(10,10,10,0.85);
+    --bg3: rgba(20,20,20,0.9);
+    --border: rgba(255,255,255,0.1);
+    --text: #FFFFFF;
+    --muted: #E8E0D0;
+    --super-gt: 'Super GT', 'Playfair Display', serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background: linear-gradient(270deg, #6B2D7E, #A855A8, #D8B5E8, #8D3DA5);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    background-attachment: fixed;
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Super GT', 'DM Sans', sans-serif;
+    font-weight: 400;
     line-height: 1.8;
     overflow-x: hidden;
     min-height: 100vh;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   /* Grain */
@@ -40,9 +52,7 @@
     z-index: 9999;
   }
 
-  /* ===================== */
-  /* STEP 1 — EMAIL GATE   */
-  /* ===================== */
+  /* STEP 1 EMAIL GATE */
   #step-1 {
     min-height: 100vh;
     display: flex;
@@ -54,7 +64,6 @@
     position: relative;
   }
 
-  /* Subtle radial glow behind hero */
   #step-1::before {
     content: '';
     position: absolute;
@@ -63,21 +72,22 @@
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255,215,0,0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
+    font-family: var(--super-gt);
+    font-size: 1rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--yellow-dim);
+    color: var(--yellow);
     margin-bottom: 3rem;
     display: flex;
     align-items: center;
     gap: 10px;
     animation: fadeDown 0.6s ease both;
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
   }
 
   .brand::before, .brand::after {
@@ -85,12 +95,12 @@
     display: block;
     width: 30px;
     height: 1px;
-    background: var(--yellow-dim);
-    opacity: 0.5;
+    background: var(--yellow);
+    opacity: 0.6;
   }
 
   .hero-wrap {
-    max-width: 580px;
+    max-width: 600px;
     animation: fadeUp 0.8s ease 0.1s both;
   }
 
@@ -98,20 +108,21 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,215,0,0.08);
-    border: 1px solid rgba(255,215,0,0.15);
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.3);
     border-radius: 100px;
-    padding: 0.35rem 1rem;
-    font-size: 0.72rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--yellow-dim);
+    color: var(--yellow);
     margin-bottom: 1.8rem;
+    font-family: var(--super-gt);
   }
 
   .badge-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--yellow);
     animation: pulse 2s ease infinite;
@@ -122,6 +133,7 @@
     50% { opacity: 0.3; }
   }
 
+  /* Hero heading stays as Playfair — per your instruction */
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 6vw, 3.4rem);
@@ -129,7 +141,8 @@
     line-height: 1.12;
     letter-spacing: -0.02em;
     margin-bottom: 1.2rem;
-    color: var(--text);
+    color: #FFFFFF;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
   }
 
   h1 em {
@@ -138,11 +151,13 @@
   }
 
   .hero-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 460px;
+    font-size: 1.15rem;
+    color: #FFFFFF;
+    max-width: 480px;
     margin: 0 auto 2.5rem;
     line-height: 1.75;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    font-family: var(--super-gt);
   }
 
   /* Email form */
@@ -150,77 +165,72 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 420px;
+    max-width: 440px;
     margin: 0 auto;
   }
 
   .input-row {
     display: flex;
     gap: 0;
-    border: 1px solid rgba(255,215,0,0.2);
-    border-radius: 3px;
+    border: 1.5px solid rgba(255,215,0,0.4);
+    border-radius: 4px;
     overflow: hidden;
     transition: border-color 0.2s;
+    box-shadow: 0 0 20px rgba(255,215,0,0.1);
   }
 
   .input-row:focus-within {
-    border-color: rgba(255,215,0,0.5);
+    border-color: rgba(255,215,0,0.8);
+    box-shadow: 0 0 30px rgba(255,215,0,0.2);
   }
 
   .email-input {
     flex: 1;
-    background: var(--bg2);
+    background: rgba(0,0,0,0.7);
     border: none;
     outline: none;
-    padding: 1rem 1.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    font-weight: 300;
+    padding: 1.1rem 1.2rem;
+    font-family: var(--super-gt);
+    font-size: 1rem;
+    color: #FFFFFF;
+    font-weight: 400;
   }
 
-  .email-input::placeholder { color: var(--muted); }
+  .email-input::placeholder { color: rgba(255,255,255,0.5); }
 
   .submit-btn {
     background: var(--yellow);
     color: #111;
     border: none;
-    padding: 1rem 1.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
+    padding: 1.1rem 1.6rem;
+    font-family: var(--super-gt);
+    font-size: 0.95rem;
+    font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     transition: all 0.2s;
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .submit-btn:hover {
-    background: #fff;
-  }
-
-  .submit-btn svg {
-    transition: transform 0.2s;
-  }
-
-  .submit-btn:hover svg {
-    transform: translateX(3px);
-  }
+  .submit-btn:hover { background: #fff; }
+  .submit-btn:hover svg { transform: translateX(3px); }
+  .submit-btn svg { transition: transform 0.2s; }
 
   .form-note {
-    font-size: 0.72rem;
-    color: var(--muted);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
+    font-family: var(--super-gt);
   }
 
-  /* Social proof strip */
+  /* Social proof */
   .proof-strip {
     margin-top: 3.5rem;
     display: flex;
@@ -238,89 +248,119 @@
   }
 
   .proof-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-family: var(--super-gt);
+    font-size: 1.7rem;
+    font-weight: 700;
     color: var(--yellow);
     line-height: 1;
+    text-shadow: 0 0 15px rgba(255,215,0,0.4);
   }
 
   .proof-label {
-    font-size: 0.7rem;
-    color: var(--muted);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
     letter-spacing: 0.05em;
     text-align: center;
+    font-family: var(--super-gt);
   }
 
   .proof-divider {
     width: 1px;
     height: 40px;
-    background: var(--border);
+    background: rgba(255,255,255,0.2);
     align-self: center;
   }
 
-  /* What they get */
+  /* WHAT YOU GET — redesigned as premium card grid */
   .what-you-get {
     margin-top: 4rem;
-    max-width: 420px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--yellow);
-    background: var(--bg2);
-    padding: 1.5rem;
-    text-align: left;
     animation: fadeUp 0.8s ease 0.4s both;
-    border-radius: 2px;
   }
 
   .wyg-title {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-family: var(--super-gt);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--yellow-dim);
-    margin-bottom: 1rem;
+    color: var(--yellow);
+    margin-bottom: 1.2rem;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255,215,0,0.3);
   }
 
-  .wyg-item {
-    display: flex;
+  .wyg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    font-size: 0.85rem;
-    color: var(--muted);
-    padding: 0.4rem 0;
-    align-items: flex-start;
-    line-height: 1.5;
+  }
+
+  .wyg-card {
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-top: 2px solid var(--yellow);
+    border-radius: 4px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(10px);
+  }
+
+  .wyg-card:hover {
+    background: rgba(0,0,0,0.75);
+    border-color: rgba(255,215,0,0.4);
   }
 
   .wyg-check {
     color: var(--yellow);
-    flex-shrink: 0;
-    margin-top: 2px;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
+    line-height: 1;
   }
 
-  /* ======================== */
-  /* STEP 2 — PRODUCT REVEAL  */
-  /* ======================== */
+  .wyg-text {
+    font-family: var(--super-gt);
+    font-size: 0.88rem;
+    color: #FFFFFF;
+    line-height: 1.5;
+  }
+
+  /* STEP 2 */
   #step-2 {
     display: none;
     min-height: 100vh;
     padding: 4rem 2rem;
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
     animation: fadeUp 0.9s ease both;
   }
 
   #step-2.visible { display: block; }
 
-  .reveal-header {
-    text-align: center;
-    margin-bottom: 4rem;
+  /* All step 2 text gets dark semi-transparent backgrounds for readability */
+  .content-wrap {
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
-  .reveal-header .badge {
-    margin-bottom: 1.5rem;
+  .reveal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255,255,255,0.08);
   }
+
+  .reveal-header .badge { margin-bottom: 1.5rem; }
 
   .reveal-header h2 {
     font-family: 'Playfair Display', serif;
@@ -329,161 +369,189 @@
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
+    color: #FFFFFF;
   }
 
   .reveal-header p {
-    font-size: 0.95rem;
-    color: var(--muted);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
     max-width: 500px;
     margin: 0 auto;
+    font-family: var(--super-gt);
   }
 
-  /* Problem blocks */
   .problem-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin: 2.5rem 0;
+    gap: 10px;
+    margin: 2rem 0;
   }
 
   .problem-cell {
-    background: var(--bg2);
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: 2px solid var(--yellow);
     padding: 1.5rem;
+    border-radius: 4px;
     transition: background 0.2s;
   }
 
-  .problem-cell:hover { background: var(--bg3); }
+  .problem-cell:hover { background: rgba(0,0,0,0.85); }
 
   .pc-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 900;
+    font-family: var(--super-gt);
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--yellow);
-    opacity: 0.35;
+    opacity: 0.5;
     line-height: 1;
     margin-bottom: 0.5rem;
   }
 
   .pc-title {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.4rem;
+    font-family: var(--super-gt);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
   }
 
   .pc-desc {
-    font-size: 0.78rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
     line-height: 1.6;
   }
 
   .pullquote {
-    border-left: 2px solid var(--yellow);
-    padding: 0.8rem 1.4rem;
+    border-left: 3px solid var(--yellow);
+    padding: 1rem 1.5rem;
     margin: 2rem 0;
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.05rem;
-    color: var(--text);
+    font-size: 1.2rem;
+    color: #FFFFFF;
     line-height: 1.6;
-    opacity: 0.8;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 0 4px 4px 0;
   }
 
   .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
+    font-family: var(--super-gt);
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--yellow-dim);
+    color: var(--yellow);
     margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(255,215,0,0.3);
   }
 
   .section-h {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-family: var(--super-gt);
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: 1.2rem;
-    color: var(--text);
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
   }
 
   .body-text {
-    font-size: 0.95rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
     margin-bottom: 1rem;
     line-height: 1.85;
   }
 
-  .body-text strong { color: var(--text); font-weight: 500; }
+  .body-text strong { color: #FFFFFF; font-weight: 700; }
 
-  hr.div { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+  hr.div {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 2.5rem 0;
+  }
 
   /* Ingredients */
   .ingredient {
     display: grid;
     grid-template-columns: 160px 1fr;
     gap: 1.5rem;
-    padding: 1.6rem 0;
-    border-bottom: 1px solid var(--border);
+    padding: 1.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     align-items: start;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    margin-bottom: 4px;
+    border-radius: 4px;
   }
 
   .ingredient:last-child { border-bottom: none; }
 
   .ing-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
+    font-family: var(--super-gt);
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--yellow);
     line-height: 1.3;
+    text-shadow: 0 0 10px rgba(255,215,0,0.3);
   }
 
   .ing-sub {
-    font-size: 0.68rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
     margin-top: 3px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   .ing-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.88);
     line-height: 1.7;
   }
 
-  .ing-desc strong { color: var(--text); font-weight: 500; }
+  .ing-desc strong { color: #FFFFFF; font-weight: 700; }
 
-  /* Verdict grid */
+  /* Verdict */
   .verdict-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    gap: 10px;
     margin: 2rem 0;
   }
 
-  .verdict-col { background: var(--bg2); padding: 1.5rem; }
+  .verdict-col {
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
 
   .vc-title {
-    font-size: 0.68rem;
+    font-family: var(--super-gt);
+    font-size: 0.82rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 1rem;
   }
 
-  .vc-title.good { color: #4CAF7D; }
-  .vc-title.bad { color: var(--muted); }
+  .vc-title.good { color: #5CDB95; }
+  .vc-title.bad { color: rgba(255,255,255,0.6); }
 
   .vc-item {
     display: flex;
     gap: 8px;
-    font-size: 0.82rem;
-    color: var(--muted);
-    padding: 0.4rem 0;
+    font-family: var(--super-gt);
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.85);
+    padding: 0.45rem 0;
     line-height: 1.5;
     align-items: flex-start;
   }
@@ -496,25 +564,30 @@
 
   /* Final CTA */
   .final-cta {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--yellow);
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-top: 3px solid var(--yellow);
     padding: 3rem 2rem;
     text-align: center;
     margin: 2rem 0;
-    border-radius: 2px;
+    border-radius: 6px;
+    box-shadow: 0 0 40px rgba(255,215,0,0.08);
   }
 
   .final-cta h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-family: var(--super-gt);
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
     font-weight: 700;
     margin-bottom: 0.8rem;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
   }
 
   .final-cta p {
-    font-size: 0.88rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
     margin-bottom: 2rem;
     max-width: 400px;
     margin-left: auto;
@@ -527,21 +600,27 @@
     gap: 8px;
     background: var(--yellow);
     color: #111;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 1.1rem 2.8rem;
-    border-radius: 2px;
+    font-family: var(--super-gt);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1.2rem 3rem;
+    border-radius: 3px;
     text-decoration: none;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     transition: all 0.2s;
+    box-shadow: 0 0 30px rgba(255,215,0,0.3);
   }
 
-  .cta-btn:hover { background: #fff; transform: translateY(-2px); }
+  .cta-btn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(255,255,255,0.3);
+  }
 
   .guarantee-note {
-    font-size: 0.72rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
     margin-top: 1.2rem;
     display: flex;
     align-items: center;
@@ -551,14 +630,88 @@
 
   /* Footer */
   footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255,255,255,0.1);
     padding: 2rem;
     text-align: center;
-    font-size: 0.72rem;
-    color: var(--muted);
+    font-family: var(--super-gt);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
     line-height: 1.9;
     max-width: 600px;
     margin: 0 auto;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 4px;
+    margin-top: 2rem;
+  }
+
+  /* Video section */
+  @keyframes borderBeam {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .video-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .video-glow {
+    position: relative;
+    border-radius: 8px;
+    padding: 3px;
+    background: linear-gradient(270deg, #FFD700, #C9A84C, #fff6c0, #FFD700);
+    background-size: 400% 400%;
+    animation: borderBeam 3s ease infinite;
+  }
+
+  .video-inner {
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    background: #0E0E0D;
+  }
+
+  .video-inner iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  .video-click-text {
+    font-family: var(--super-gt);
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .video-click-text::before,
+  .video-click-text::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--yellow);
+    opacity: 0.5;
   }
 
   /* Animations */
@@ -581,38 +734,26 @@
     .verdict-grid { grid-template-columns: 1fr; }
     .ingredient { grid-template-columns: 1fr; gap: 0.5rem; }
     .final-cta { padding: 2rem 1.2rem; }
+    .video-grid { grid-template-columns: 1fr; }
+    .wyg-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ==================== -->
-<!-- STEP 1 — EMAIL GATE  -->
-<!-- ==================== -->
+<!-- STEP 1 EMAIL GATE -->
 <div id="step-1">
-
   <div class="brand">The Honest Shelf</div>
-
   <div class="hero-wrap">
-
     <div class="badge">
       <span class="badge-dot"></span>
       Free Guide — No Credit Card
     </div>
-
     <h1>The Morning Coffee Trick That's Helping Thousands <em>Finally</em> Lose Weight</h1>
-
     <p class="hero-sub">Enter your email and I'll send you the free guide — plus the exact research-backed product making this possible. Takes 10 seconds.</p>
-
     <form class="email-form" onsubmit="handleSubmit(event)">
       <div class="input-row">
-        <input
-          type="email"
-          class="email-input"
-          id="email-input"
-          placeholder="Enter your best email address"
-          required
-        />
+        <input type="email" class="email-input" id="email-input" placeholder="Enter your best email address" required/>
         <button type="submit" class="submit-btn">
           Send It Free
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -623,7 +764,6 @@
         No spam. Unsubscribe anytime. Your email is safe.
       </div>
     </form>
-
   </div>
 
   <!-- Social proof -->
@@ -649,33 +789,31 @@
     </div>
   </div>
 
-  <!-- What they get -->
+  <!-- What you get — redesigned as card grid -->
   <div class="what-you-get">
     <div class="wyg-title">What you get instantly</div>
-    <div class="wyg-item">
-      <span class="wyg-check">✦</span>
-      The free "Coffee Metabolism Guide" PDF — 3 things to add to your morning coffee
-    </div>
-    <div class="wyg-item">
-      <span class="wyg-check">✦</span>
-      The Harvard research on why your metabolism slowed down (and how to fix it)
-    </div>
-    <div class="wyg-item">
-      <span class="wyg-check">✦</span>
-      The exact product I found after 3 weeks of research — with honest pros and cons
-    </div>
-    <div class="wyg-item">
-      <span class="wyg-check">✦</span>
-      No hype. No brand deals. Just what I actually found.
+    <div class="wyg-grid">
+      <div class="wyg-card">
+        <span class="wyg-check">✦</span>
+        <span class="wyg-text">Free "Coffee Metabolism Guide" PDF — 3 things to add to your morning coffee</span>
+      </div>
+      <div class="wyg-card">
+        <span class="wyg-check">✦</span>
+        <span class="wyg-text">Harvard research on why your metabolism slowed — and how to fix it</span>
+      </div>
+      <div class="wyg-card">
+        <span class="wyg-check">✦</span>
+        <span class="wyg-text">The exact product I found after 3 weeks of research — with honest pros and cons</span>
+      </div>
+      <div class="wyg-card">
+        <span class="wyg-check">✦</span>
+        <span class="wyg-text">No hype. No brand deals. Just what I actually found.</span>
+      </div>
     </div>
   </div>
-
 </div>
 
-
-<!-- ========================= -->
-<!-- STEP 2 — PRODUCT REVEAL   -->
-<!-- ========================= -->
+<!-- STEP 2 PRODUCT REVEAL -->
 <div id="step-2">
 
   <div class="reveal-header">
@@ -689,7 +827,7 @@
 
   <!-- Trust image -->
   <div style="margin:0 0 2rem;text-align:center;">
-    <img src="https://i.ibb.co/bMcN9hFV/trusted-reviewers.webp" alt="Trusted reviewers" style="width:100%;max-width:600px;border-radius:4px;border:1px solid rgba(255,255,255,0.06);" />
+    <img src="https://i.ibb.co/bMcN9hFV/trusted-reviewers.webp" alt="Trusted reviewers" style="width:100%;max-width:600px;border-radius:6px;border:1px solid rgba(255,215,0,0.2);box-shadow:0 0 30px rgba(0,0,0,0.4);" />
   </div>
 
   <!-- Problems -->
@@ -725,11 +863,11 @@
   <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem;">
     <div style="flex:1;min-width:220px;">
       <p class="body-text">My first reaction was dismissal. A powder you add to coffee. It immediately pattern-matched to everything I'd been reading about for weeks — overhyped, under-researched.</p>
-      <p class="body-text">Then I read the ingredient list instead of the marketing. The mechanism made sense. <strong>Certain compounds, when paired with caffeine specifically, work with your body's existing system rather than triggering its defenses.</strong> Caffeine is already part of your morning. The body expects it. Adding the right compounds to that existing habit sidesteps the adaptation response entirely.</p>
+      <p class="body-text">Then I read the ingredient list instead of the marketing. The mechanism made sense. <strong>Certain compounds, when paired with caffeine specifically, work with your body's existing system rather than triggering its defenses.</strong> Caffeine is already part of your morning. The body expects it. Adding the right compounds sidesteps the adaptation response entirely.</p>
     </div>
     <div style="flex-shrink:0;width:200px;">
-      <img src="https://i.ibb.co/vvsxpRsK/6bottle-Thumb.jpg" alt="Citrus Burn bottles" style="width:100%;border-radius:4px;border:1px solid rgba(255,215,0,0.15);" />
-      <p style="font-size:0.7rem;color:#7A7670;text-align:center;margin-top:6px;letter-spacing:0.04em;">Citrus Burn — official supply</p>
+      <img src="https://i.ibb.co/vvsxpRsK/6bottle-Thumb.jpg" alt="Citrus Burn bottles" style="width:100%;border-radius:6px;border:1px solid rgba(255,215,0,0.2);box-shadow:0 0 20px rgba(255,215,0,0.1);" />
+      <p style="font-family:'Super GT',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.6);text-align:center;margin-top:8px;letter-spacing:0.04em;">Citrus Burn — official supply</p>
     </div>
   </div>
 
@@ -778,81 +916,7 @@
   <div class="section-h">See It For Yourself</div>
   <p class="body-text" style="margin-bottom:2rem;">Watch these short explainers before making any decision. No fluff — just the mechanism explained visually.</p>
 
-  <style>
-    @keyframes borderBeam {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .video-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .video-glow {
-      position: relative;
-      border-radius: 8px;
-      padding: 3px;
-      background: linear-gradient(270deg, #FFD700, #C9A84C, #fff6c0, #FFD700);
-      background-size: 400% 400%;
-      animation: borderBeam 3s ease infinite;
-    }
-
-    .video-inner {
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      background: #0E0E0D;
-    }
-
-    .video-inner iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-
-    .video-click-text {
-      text-align: center;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #C9A84C;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .video-click-text::before,
-    .video-click-text::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: #C9A84C;
-      opacity: 0.5;
-    }
-
-    @media (max-width: 580px) {
-      .video-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-
   <div class="video-grid">
-
     <div class="video-wrap">
       <div class="video-glow">
         <div class="video-inner">
@@ -861,7 +925,6 @@
       </div>
       <div class="video-click-text">Click to watch</div>
     </div>
-
     <div class="video-wrap">
       <div class="video-glow">
         <div class="video-inner">
@@ -870,7 +933,6 @@
       </div>
       <div class="video-click-text">Click to watch</div>
     </div>
-
   </div>
 
   <hr class="div">
@@ -901,10 +963,10 @@
 
   <!-- Final CTA -->
   <div class="final-cta">
-    <h3>Check INVEST NOW IN YOUR HEALTH</h3>
+    <h3>Invest Now In Your Health</h3>
     <p>The 60-day guarantee only applies to purchases from the official source. Third-party sellers can't honor it.</p>
-    <a href="https://hop.clickbank.net/?affiliate=youraf1&vendor=citrusburn" class="cta-btn" target="_blank" rel="nofollow">
-      Avail your 75% discount
+    <a href="YOUR_AFFILIATE_LINK_HERE" class="cta-btn" target="_blank" rel="nofollow">
+      Visit Official Citrus Burn Site
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <div class="guarantee-note">
@@ -914,10 +976,10 @@
   </div>
 
   <footer>
-    <p style="font-family:'Playfair Display',serif; font-size:0.9rem; color:var(--text); margin-bottom:0.3rem;">The Honest Shelf</p>
+    <p style="font-family:'Super GT',sans-serif;font-size:1rem;color:#FFFFFF;margin-bottom:0.3rem;">The Honest Shelf</p>
     <p>Honest reviews. Real research. No hype.</p>
     <br>
-    <p><strong style="color:var(--text)">Affiliate Disclosure:</strong> This page contains affiliate links. If you purchase through our link we may earn a small commission at no extra cost to you. This does not influence our research or conclusions.</p>
+    <p><strong style="color:#FFFFFF">Affiliate Disclosure:</strong> This page contains affiliate links. If you purchase through our link we may earn a small commission at no extra cost to you. This does not influence our research or conclusions.</p>
     <br>
     <p>© 2026 The Honest Shelf</p>
   </footer>
@@ -925,28 +987,20 @@
 </div>
 
 <script>
-  // Email collected — store it and reveal product
   function handleSubmit(e) {
     e.preventDefault();
     const email = document.getElementById('email-input').value;
-
-    // Store email in localStorage
     localStorage.setItem('ths_email', email);
     localStorage.setItem('ths_signup', new Date().toISOString());
-
-    // Hide step 1, show step 2
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
-
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Send email to Brevo contact list
     fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key': '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'
+        'api-key': 'YOUR_NEW_BREVO_API_KEY'
       },
       body: JSON.stringify({
         email: email,
@@ -956,7 +1010,6 @@
     });
   }
 
-  // If already signed up, skip to step 2
   if (localStorage.getItem('ths_email')) {
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
