@@ -899,33 +899,32 @@
 </div>
 
 <script>
-function handleSubmit(e) {
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script>
+  const forminit = new Forminit();
+  const FORM_ID = "lo9h0s4dnqc";
+
+  document.getElementById("contact-form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = document.getElementById('email-input').value;
-    localStorage.setItem('ths_email', email);
-    localStorage.setItem('ths_signup', new Date().toISOString());
+    const formData = new FormData(e.target);
+    const { data, error } = await forminit.submit(FORM_ID, formData);
+
+    if (error) {
+      console.error(error.message);
+      return;
+    }
+
+    localStorage.setItem('ths_email', e.target.querySelector('[name="fi-sender-email"]').value);
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': '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'
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [4],
-        updateEnabled: true
-      })
-    });
-  }
+  });
 
   if (localStorage.getItem('ths_email')) {
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
   }
+</script>
 </script>
 
 </body>
