@@ -899,9 +899,10 @@
 </div>
 
 <script>
-  function handleSubmit(e) {
+function handleSubmit(e) {
     e.preventDefault();
     const email = document.getElementById('email-input').value;
+    alert('Submitting: ' + email);
     localStorage.setItem('ths_email', email);
     localStorage.setItem('ths_signup', new Date().toISOString());
     document.getElementById('step-1').style.display = 'none';
