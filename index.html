@@ -878,7 +878,7 @@
   <div class="final-cta">
     <h3>Check Current Pricing on the Official Site</h3>
     <p>The 60-day guarantee only applies to purchases from the official source. Third-party sellers can't honor it.</p>
-    <a href="https://hop.clickbank.net/?affiliate=youraf1&vendor=citrusburn" class="cta-btn" target="_blank" rel="nofollow">
+    <a href="https://2421cuzl31i0et66umyl6y6eoq.hop.clickbank.net/?&traffic_source=medium&traffic_type=organic" class="cta-btn" target="_blank" rel="nofollow">
       Visit Official CitrusBurn Site
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
@@ -899,23 +899,33 @@
 </div>
 
 <script>
-<!-- Include Forminit SDK -->
-<script src="https://forminit.com/sdk/v1/forminit.js"></script>
-
-<!-- Your Form -->
-<script>
-  if (window.location.search.includes('submitted=true')) {
-    localStorage.setItem('ths_email', 'submitted');
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email-input').value;
+    localStorage.setItem('ths_email', email);
+    localStorage.setItem('ths_signup', new Date().toISOString());
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': 'YOUR_NEW_BREVO_API_KEY'
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [2],
+        updateEnabled: true
+      })
+    });
   }
 
   if (localStorage.getItem('ths_email')) {
     document.getElementById('step-1').style.display = 'none';
     document.getElementById('step-2').classList.add('visible');
   }
-</script>
 </script>
 
 </body>
